@@ -1,5 +1,8 @@
 import React ,{useReducer, useRef} from 'react'
-import './Todo.css'
+import './Todo.css';
+import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 
 const Todolist = () => {
@@ -33,7 +36,7 @@ const Todolist = () => {
 
     function handleSubmit(event){
         event.preventDefault();
-    //   inputref.current.value = ''
+      // inputref.current.value = ''
       
       
       }
@@ -44,7 +47,7 @@ const Todolist = () => {
   return (
     <>
  
-  <ul>
+  <ul className='list'>
     {
 
     item.map((item, index) => (
@@ -57,17 +60,17 @@ const Todolist = () => {
   </ul>
 
   <form onSubmit={handleSubmit}>
-  <input ref={inputref}/>
+  <input ref={inputref} placeholder='Enter A Todo Task'/>
   </form>
 
-  <button className='savebtn' onClick={()=> dispatch({
+  <Button color="primary" onClick={()=> dispatch({
       type:'add',
       name : inputref.current.value
   })}> Add Task
-  </button>
+  </Button>
           
 
-  <button className='delbtn' onClick={()=> dispatch({type:'delall'})}>Clear</button>
+  <Button color="primary" onClick={()=> dispatch({type:'delall'})}>Clear</Button>
   </>
       
     
